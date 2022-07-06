@@ -4,9 +4,8 @@
 
 void	ft_putstr_err(char *str)
 {
-	int	i;
+	int i = 0;
 
-	i = 0;
 	while (str[i])
 		i++;
 	write(2, str, i);
@@ -25,15 +24,12 @@ int	ft_execute(char **argv, int i, int tmp_fd, char **env)
 
 int	main(int argc, char **argv, char **env)
 {
-	int	i;
-	int	tmp_fd;
-	int	fd[2];
-	int	pid;
-
 	(void)argc;
-	i = 0;
-	pid = 0;
-	tmp_fd = dup(STDIN_FILENO);
+	int fd[2];
+	int i = 0;
+	int pid = 0;
+	int tmp_fd = dup(STDIN_FILENO);
+
 	while (argv[i] && argv[i + 1])
 	{
 		argv = &argv[i + 1];
