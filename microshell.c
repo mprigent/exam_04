@@ -36,7 +36,8 @@ int main(int argc, char **argv, char **env)
 		i = 0;
 		while (argv[i] && strcmp(argv[i], ";") && strcmp(argv[i], "|"))
 			i++;
-		if (strcmp(argv[0], "cd") == 0) // cd errors
+		// cd errors
+		if (strcmp(argv[0], "cd") == 0)
 		{
 			if (i != 2)
 				ft_print_err("error: cd: bad arguments\n");
@@ -47,7 +48,8 @@ int main(int argc, char **argv, char **env)
 				ft_print_err("\n");
 			}
 		}
-		else if (argv != &argv[i] && (argv[i] == NULL || strcmp(argv[i], ";") == 0)) // ; implementation
+		// ";" implementation
+		else if (argv != &argv[i] && (argv[i] == NULL || strcmp(argv[i], ";") == 0))
 		{
 			pid = fork();
 			if (pid == 0)
@@ -63,7 +65,8 @@ int main(int argc, char **argv, char **env)
 				temp_fd = dup(STDIN_FILENO);
 			}
 		}
-		else if (argv != &argv[i] && strcmp(argv[i], "|") == 0) // | implementation
+		// "|" implementation
+		else if (argv != &argv[i] && strcmp(argv[i], "|") == 0)
 		{
 			pipe(fd);
 			pid = fork();
